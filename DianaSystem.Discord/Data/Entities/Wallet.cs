@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Numerics;
 
 namespace DianaSystem.Discord.Data.Entities
 {
@@ -10,7 +9,7 @@ namespace DianaSystem.Discord.Data.Entities
         [Column("id")]
         public int Id { get; set; }
         [Column("balance")]
-        public BigInteger Balance { get; set; } = 0;
+        public long Balance { get; set; } = 0;
         [ForeignKey("UserId")]
         public User User { get; set; }
         [Column("user_id")]
