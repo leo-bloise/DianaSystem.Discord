@@ -28,6 +28,14 @@ namespace DianaSystem.Discord.Commands
                 .WithName("coins")
                 .WithDescription("See how many coins you have or, maybe, join the Universe.");
         }
+        private Embed BuildCoinMessage(long balance, string username)
+        {
+            return new EmbedBuilder()
+                .WithTitle($"Balance")
+                .WithDescription($"**$ {balance}**")
+                .WithColor(Color.Green)
+                .Build();
+        }
         public async Task Handle(SocketSlashCommand command)
         {
             SocketUser socketUser = command.User;
@@ -42,7 +50,7 @@ namespace DianaSystem.Discord.Commands
                     await command.RespondAsync("I've lost your wallet :(");
                     return;
                 }
-                await command.RespondAsync($"Coins {wallet.Balance}");
+                await command.RespondAsync(embed: BuildCoinMessage(wallet.Balance, socketUser.Username), ephemeral: true);
                 return;
             }
             Logger.LogDebug($"User does not exist {socketUser.Username}. Creating it with DiscordId -> {socketUserId}");

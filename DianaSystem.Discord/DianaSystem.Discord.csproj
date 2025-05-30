@@ -16,6 +16,9 @@
   <ItemGroup>
 	  <None Update="appsettings*.json">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>	
+	  </None>
+	  <None Update="assets/*">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
   </ItemGroup>
 </Project>
