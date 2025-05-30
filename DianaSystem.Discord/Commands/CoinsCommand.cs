@@ -31,20 +31,21 @@ namespace DianaSystem.Discord.Commands
         public async Task Handle(SocketSlashCommand command)
         {
             SocketUser socketUser = command.User;
+            string socketUserId = socketUser.Id.ToString();
             Logger.LogDebug($"CoinsCommand called from {socketUser.Username}");
-            if (await UserService.UserExistsAsync(socketUser.Id.ToString()))
+            if (await UserService.UserExistsAsync(socketUserId))
             {
-                Wallet? wallet = await WalletService.GetWalletAsync(socketUser.Id.ToString());
+                Wallet? wallet = await WalletService.GetWalletAsync(socketUserId);
                 if (wallet == null)
                 {
-                    Logger.LogError($"User [discordId][{socketUser.Id}] exists, but it does not have a wallet");
+                    Logger.LogError($"User [discordId][{socketUserId}] exists, but it does not have a wallet");
                     await command.RespondAsync("I've lost your wallet :(");
                     return;
                 }
                 await command.RespondAsync($"Coins {wallet.Balance}");
                 return;
             }
-            Logger.LogDebug($"User does not exist {socketUser.Username}. Creating it with DiscordId -> {socketUser.Id}");
+            Logger.LogDebug($"User does not exist {socketUser.Username}. Creating it with DiscordId -> {socketUserId}");
             await UserService.CreateUserAsync(socketUser);
             await command.RespondAsync($"You have joined the Universe, {socketUser.Username}! Your coins will be tracked from now on.");
         }
