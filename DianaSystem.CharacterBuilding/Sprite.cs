@@ -1,10 +1,9 @@
 ﻿using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Gif;
 using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
 using System.Collections;
 
-namespace DianaSystem.CharacterBuilding
+namespace DianaSystem.AnimationGenerator
 {
     public class Sprite : IEnumerable<Image>, IDisposable
     {

@@ -1,6 +1,6 @@
 ﻿using SixLabors.ImageSharp;
 
-namespace DianaSystem.CharacterBuilding
+namespace DianaSystem.AnimationGenerator
 {
     public class Program
     {

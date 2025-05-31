@@ -2,7 +2,7 @@
 using SixLabors.ImageSharp.Processing;
 using System.Collections;
 
-namespace DianaSystem.CharacterBuilding
+namespace DianaSystem.AnimationGenerator
 {
     public class SpriteSheet : IEnumerator<Image>, IDisposable
     {
